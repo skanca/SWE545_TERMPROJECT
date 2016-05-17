@@ -2,13 +2,20 @@ import random
 
 class Game(object):
 
-    def __init__(self,playerLetter,computerLetter):
+    def __init__(self,running):
+        self.gameIsPlaying = running
+
+    def start(self,playerLetter):
         self.win = None
         self.board =[' '] * 10
         self.playerLetter = playerLetter
-        self.computerLetter = computerLetter
+        if playerLetter is 'X':
+            self.computerLetter = 'O'
+        else:
+            self.computerLetter = 'X'
         self.turn = self.whoGoesFirst()
         self.gameIsPlaying = True
+        return True
 
     def whoGoesFirst(self):
         # Randomly choose the player who goes first.
